@@ -7,6 +7,7 @@ import { useState } from "react";
 // Components
 import { FormInput, Button } from "../";
 
+// Utils
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,

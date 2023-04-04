@@ -5,7 +5,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 // Routes
-import { Home, SignIn } from "./routes";
+import { Home, Authentication } from "./routes";
 
 // Layouts
 import { LandingLayout } from "./layouts";
@@ -20,7 +20,7 @@ const App = () => {
       <Route path="/" element={<LandingLayout />}>
         <Route index element={<Home />} />
         <Route path="shop" element={<Shop />} />
-        <Route path="sign-in" element={<SignIn />} />
+        <Route path="auth" element={<Authentication />} />
       </Route>
     </Routes>
   );
