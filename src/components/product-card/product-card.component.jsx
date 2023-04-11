@@ -1,6 +1,12 @@
 // Modules
 import React from "react";
 
+// Hooks
+import { useContext } from "react";
+
+// Contexts
+import { CartContext } from "../../contexts";
+
 // Components
 import { Button } from "../";
 
@@ -8,7 +14,10 @@ import { Button } from "../";
 import "./product-card.styles.scss";
 
 export const ProductCard = ({ product }) => {
+  const { addItemToCart } = useContext(CartContext);
   const { name, price, imageUrl } = product;
+
+  const addProductToCart = () => addItemToCart(product);
 
   return (
     <div className="product-card-container">
@@ -17,7 +26,9 @@ export const ProductCard = ({ product }) => {
         <span className="name">{name}</span>
         <span className="price">{price}</span>
       </div>
-      <Button buttonColor="inverted">Add to cart</Button>
+      <Button buttonColor="inverted" onClick={addProductToCart}>
+        Add to cart
+      </Button>
     </div>
   );
 };

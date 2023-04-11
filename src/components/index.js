@@ -9,3 +9,4 @@ export * from "./sign-in-form/sign-in-form.component";
 export * from "./product-card/product-card.component";
 export * from "./cart-icon/cart-icon.component";
 export * from "./cart-dropdown/cart-dropdown.component";
+export * from "./cart-item/cart-item.component";
