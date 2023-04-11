@@ -59,8 +59,7 @@ export const SignInForm = ({ className }) => {
   };
 
   const handleSignInWithGoogleProvider = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   return (
@@ -72,7 +71,7 @@ export const SignInForm = ({ className }) => {
         <FormInput
           label="email"
           type="email"
-          id="email"
+          id="signInEmail"
           name="email"
           value={email}
           required
@@ -82,7 +81,7 @@ export const SignInForm = ({ className }) => {
         <FormInput
           label="password"
           type="password"
-          id="password"
+          id="signInPassword"
           name="password"
           value={password}
           required

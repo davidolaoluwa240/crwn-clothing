@@ -5,14 +5,10 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 // Routes
-import { Home, Authentication } from "./routes";
+import { Home, Authentication, Shop } from "./routes";
 
 // Layouts
 import { LandingLayout } from "./layouts";
-
-const Shop = () => {
-  return <h1>I am the shop component</h1>;
-};
 
 const App = () => {
   return (
