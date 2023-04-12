@@ -5,7 +5,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 // Routes
-import { Home, Authentication, Shop } from "./routes";
+import { Home, Authentication, Shop, Checkout } from "./routes";
 
 // Layouts
 import { LandingLayout } from "./layouts";
@@ -17,6 +17,7 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="shop" element={<Shop />} />
         <Route path="auth" element={<Authentication />} />
+        <Route path="checkout" element={<Checkout />} />
       </Route>
     </Routes>
   );

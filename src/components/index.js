@@ -10,3 +10,4 @@ export * from "./product-card/product-card.component";
 export * from "./cart-icon/cart-icon.component";
 export * from "./cart-dropdown/cart-dropdown.component";
 export * from "./cart-item/cart-item.component";
+export * from "./checkout-item/checkout-item.component";
