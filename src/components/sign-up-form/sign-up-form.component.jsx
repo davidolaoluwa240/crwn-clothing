@@ -14,7 +14,7 @@ import {
 } from "../../utils/firebase/firebase.utils";
 
 // Style
-import "./sign-up-form.styles.scss";
+import { SignUpContainer } from "../sign-in-form/sign-in-form.styles";
 
 // Static Data
 const defaultFormFields = {
@@ -24,7 +24,7 @@ const defaultFormFields = {
   confirmPassword: "",
 };
 
-export const SignUpForm = ({ className }) => {
+export const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { confirmPassword, displayName, email, password } = formFields;
 
@@ -64,7 +64,7 @@ export const SignUpForm = ({ className }) => {
   };
 
   return (
-    <div className={`sign-up-container ${className}`}>
+    <SignUpContainer>
       <h2>Don't have an account</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
@@ -110,10 +110,6 @@ export const SignUpForm = ({ className }) => {
 
         <Button type="submit">Sign Up</Button>
       </form>
-    </div>
+    </SignUpContainer>
   );
-};
-
-SignUpForm.defaultProps = {
-  className: "",
 };

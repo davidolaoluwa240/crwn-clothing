@@ -5,13 +5,13 @@ import React from "react";
 import { SignUpForm, SignInForm } from "../../components";
 
 // Style
-import "./authencation.styles.scss";
+import { AuthenticationContainer } from "./authencation.styles.jsx";
 
 export const Authentication = () => {
   return (
-    <div className="authentication-container">
+    <AuthenticationContainer>
       <SignInForm />
       <SignUpForm />
-    </div>
+    </AuthenticationContainer>
   );
 };

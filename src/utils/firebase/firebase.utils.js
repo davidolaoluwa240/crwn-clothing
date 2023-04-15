@@ -17,6 +17,9 @@ import {
   getDoc,
   setDoc,
   serverTimestamp,
+  writeBatch,
+  query,
+  getDocs,
 } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
@@ -51,6 +54,46 @@ export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
 export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
+
+/**
+ * Add Collection And Documents
+ * @param {string} collectionName Collection name
+ * @param {array} documents Documents
+ * @param {string} documentKey Document key
+ */
+export const addCollectionAndDocuments = async (
+  collectionName,
+  documents,
+  field = "title"
+) => {
+  const collectionRef = collection(db, collectionName);
+  const batch = writeBatch(db);
+
+  documents.forEach((document) => {
+    const docRef = doc(collectionRef, document[field].toLowerCase());
+    batch.set(docRef, document);
+  });
+
+  await batch.commit();
+  console.log("Done!");
+};
+
+/**
+ * Get Categories And Documents
+ */
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, "categories");
+  const categoryQuery = query(collectionRef);
+  const querySnapshot = await getDocs(categoryQuery);
+
+  const categoryMap = querySnapshot.docs.reduce((category, docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+    category[title] = items;
+    return category;
+  }, {});
+
+  return categoryMap;
+};
 
 export const createUserDocumentFromAuth = async (
   userAuth,

@@ -12,7 +12,11 @@ import { CartContext } from "../../contexts";
 import { Button, CartItem } from "../";
 
 // Style
-import "./cart-dropdown.styles.scss";
+import {
+  EmptyMessage,
+  CartDropdownContainer,
+  CartItems,
+} from "./cart-dropdown.styles.jsx";
 
 export const CartDropdown = () => {
   const { cartItems } = useContext(CartContext);
@@ -29,9 +33,12 @@ export const CartDropdown = () => {
   const goToCheckoutHandler = () => navigate("/checkout");
 
   return (
-    <div className="cart-dropdown-container">
-      <div className="cart-items">{renderedCartItems}</div>
+    <CartDropdownContainer>
+      <CartItems>
+        {!cartItems.length && <EmptyMessage>Your cart is empty</EmptyMessage>}
+        {!!cartItems.length && renderedCartItems}
+      </CartItems>
       <Button onClick={goToCheckoutHandler}>GO TO CHECKOUT</Button>
-    </div>
+    </CartDropdownContainer>
   );
 };

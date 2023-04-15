@@ -2,20 +2,26 @@
 import React from "react";
 
 // Style
-import "./button.styles.scss";
+import {
+  BaseButton,
+  GoogleSignInButton,
+  InvertedButton,
+} from "./button.styles.jsx";
 
-const BUTTON_COLOR_VARIANT = {
+export const BUTTON_TYPE_VARIANT = {
+  base: "base",
   google: "google-sign-in",
   inverted: "inverted",
 };
 
+const getButton = (buttonType = BUTTON_TYPE_VARIANT.base) =>
+  ({
+    [BUTTON_TYPE_VARIANT.base]: BaseButton,
+    [BUTTON_TYPE_VARIANT.google]: GoogleSignInButton,
+    [BUTTON_TYPE_VARIANT.inverted]: InvertedButton,
+  }[buttonType]);
+
 export const Button = ({ children, buttonColor, ...buttonProps }) => {
-  return (
-    <button
-      className={`button-container ${BUTTON_COLOR_VARIANT[buttonColor]}`}
-      {...buttonProps}
-    >
-      {children}
-    </button>
-  );
+  const CustomButton = getButton(buttonColor);
+  return <CustomButton {...buttonProps}>{children}</CustomButton>;
 };

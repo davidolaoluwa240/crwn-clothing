@@ -1,5 +1,5 @@
 // Re-Export Components
-export * from "./category-item/category-item.component";
+export * from "./directory-item/directory-item.component";
 export * from "./directory/directory.component";
 export * from "./navigation/navigation.component";
 export * from "./sign-up-form/sign-up-form.component";
@@ -11,3 +11,4 @@ export * from "./cart-icon/cart-icon.component";
 export * from "./cart-dropdown/cart-dropdown.component";
 export * from "./cart-item/cart-item.component";
 export * from "./checkout-item/checkout-item.component";
+export * from "./category-preview/category-preview.component";

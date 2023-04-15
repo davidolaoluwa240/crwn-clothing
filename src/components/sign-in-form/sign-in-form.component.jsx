@@ -8,14 +8,13 @@ import { useState } from "react";
 import {
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 
 // Components
-import { Button, FormInput } from "../";
+import { Button, FormInput, BUTTON_TYPE_VARIANT } from "../";
 
 // Style
-import "./sign-in-form.styles.scss";
+import { ButtonsContainer, SignUpContainer } from "./sign-in-form.styles.jsx";
 
 // Static Data
 const defaultFormFields = {
@@ -23,7 +22,7 @@ const defaultFormFields = {
   password: "",
 };
 
-export const SignInForm = ({ className }) => {
+export const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -63,7 +62,7 @@ export const SignInForm = ({ className }) => {
   };
 
   return (
-    <div className={`sign-up-container ${className}`}>
+    <SignUpContainer>
       <h2>I already have an account</h2>
       <span>Sign in with your email and password</span>
 
@@ -88,21 +87,17 @@ export const SignInForm = ({ className }) => {
           onChange={handleInputChange}
         />
 
-        <div className="buttons-container">
+        <ButtonsContainer>
           <Button type="submit">SIGN IN</Button>
           <Button
             type="button"
-            buttonColor="google"
+            buttonColor={BUTTON_TYPE_VARIANT.google}
             onClick={handleSignInWithGoogleProvider}
           >
             SIGN IN WITH GOOGLE
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignUpContainer>
   );
-};
-
-SignInForm.defaultProps = {
-  className: "",
 };
