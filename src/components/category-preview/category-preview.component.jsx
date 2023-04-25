@@ -15,7 +15,7 @@ export const CategoryPreview = ({ title, products }) => {
   return (
     <CategoryPreviewContainer>
       <h2>
-        <CategoryPreviewTitle to={`/shop/${title}`}>
+        <CategoryPreviewTitle to={`/shop/${title.toLowerCase()}`}>
           {title.toUpperCase()}
         </CategoryPreviewTitle>
       </h2>
