@@ -4,10 +4,12 @@ import { createRoot } from "react-dom/client";
 
 // Components
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import App from "./App";
 
-// Contexts
-import { UserProvider, CategoriesProvider, CartProvider } from "./contexts";
+// Store
+import { store, persistor } from "./store/store";
 
 // Style
 import "./index.scss";
@@ -18,13 +20,11 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <UserProvider>
-        <CategoriesProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </CategoriesProvider>
-      </UserProvider>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

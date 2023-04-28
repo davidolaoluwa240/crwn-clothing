@@ -6,10 +6,13 @@ import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
 import { CartDropdown, CartIcon } from "../";
 
 // Hooks
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 
-// Contexts
-import { UserContext, CartContext } from "../../contexts";
+// Redux Selectors
+import { selectCurrentUser } from "../../store/user/user.selector";
+
+// Redux Selectors
+import { selectIsCartOpen } from "../../store/cart/cart.selector";
 
 // Utils
 import { signOutUser } from "../../utils/firebase/firebase.utils";
@@ -23,8 +26,8 @@ import {
 } from "./navigation.styles.jsx";
 
 export const Navigation = () => {
-  const { currentUser } = useContext(UserContext);
-  const { isCartOpen } = useContext(CartContext);
+  const currentUser = useSelector(selectCurrentUser);
+  const isCartOpen = useSelector(selectIsCartOpen);
 
   const signOutHandler = async () => {
     await signOutUser();

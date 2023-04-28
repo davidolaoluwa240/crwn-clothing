@@ -12,3 +12,4 @@ export * from "./cart-dropdown/cart-dropdown.component";
 export * from "./cart-item/cart-item.component";
 export * from "./checkout-item/checkout-item.component";
 export * from "./category-preview/category-preview.component";
+export * from "./spinner/spinner.component";
