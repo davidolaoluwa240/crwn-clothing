@@ -13,3 +13,4 @@ export * from "./cart-item/cart-item.component";
 export * from "./checkout-item/checkout-item.component";
 export * from "./category-preview/category-preview.component";
 export * from "./spinner/spinner.component";
+export * from "./payment-form/payment-form.component";

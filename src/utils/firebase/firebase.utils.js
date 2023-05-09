@@ -80,9 +80,10 @@ export const addCollectionAndDocuments = async (
 
 /**
  * Get Categories And Documents
+ * @param {string} collectionName Collection name
  */
-export const getCategoriesAndDocuments = async () => {
-  const collectionRef = collection(db, "categories");
+export const getCategoriesAndDocuments = async (collectionName) => {
+  const collectionRef = collection(db, collectionName);
   const categoryQuery = query(collectionRef);
   const querySnapshot = await getDocs(categoryQuery);
   return querySnapshot.docs.map((docSnapshot) => ({
@@ -117,10 +118,11 @@ export const createUserDocumentFromAuth = async (
       });
     }
 
-    // Return User Ref
-    return userRef;
+    // Return User Snapshot
+    return userSnapshot;
   } catch (err) {
     console.log("Error occur creating user ", err.message);
+    throw err;
   }
 };
 
@@ -138,3 +140,15 @@ export const signOutUser = () => signOut(auth);
 
 export const onAuthStateChangeListener = (callback) =>
   onAuthStateChanged(auth, callback);
+
+export const getCurrentUser = () =>
+  new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unsubscribe();
+        resolve(userAuth);
+      },
+      reject
+    );
+  });

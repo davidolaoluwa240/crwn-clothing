@@ -3,16 +3,20 @@ import React from "react";
 
 // Components
 import { Fragment } from "react";
-import { CategoryPreview } from "../../components";
+import { CategoryPreview, Spinner } from "../../components";
 
 // Hooks
 import { useSelector } from "react-redux";
 
 // Redux Selectors
-import { selectCategoriesMap } from "../../store/categories/category.selector";
+import {
+  selectCategoriesMap,
+  selectCategoriesIsLoading,
+} from "../../store/categories/category.selector";
 
 export const CategoriesPreview = () => {
   const categoriesMap = useSelector(selectCategoriesMap);
+  const isLoading = useSelector(selectCategoriesIsLoading);
 
   // Product Items
   const renderedProductItems = Object.keys(categoriesMap).map((title) => (
@@ -23,5 +27,10 @@ export const CategoriesPreview = () => {
     />
   ));
 
-  return <Fragment>{renderedProductItems}</Fragment>;
+  return (
+    <Fragment>
+      {isLoading && <Spinner />}
+      {!isLoading && renderedProductItems}
+    </Fragment>
+  );
 };

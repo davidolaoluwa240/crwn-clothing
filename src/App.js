@@ -1,18 +1,12 @@
 // Modules
 import React from "react";
 
-// Firebase
-import {
-  onAuthStateChangeListener,
-  createUserDocumentFromAuth,
-} from "./utils/firebase/firebase.utils";
-
 // Hooks
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 // Redux Actions
-import { setCurrentUser } from "./store/user/user.action";
+import { checkUserSession } from "./store/user/user.action";
 
 // Components
 import { Routes, Route } from "react-router-dom";
@@ -27,12 +21,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChangeListener(async (user) => {
-      dispatch(setCurrentUser(user));
-      user && (await createUserDocumentFromAuth(user));
-    });
-
-    return unsubscribe;
+    dispatch(checkUserSession());
   }, []);
 
   return (
