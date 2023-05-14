@@ -3,7 +3,6 @@ import { CART_ACTION_TYPES, CartItem } from "./cart.types";
 import {
   createAction,
   WithMatcher,
-  Action,
   ActionWithPayload,
 } from "../../utils/reducer/reducer.utils";
 import { CategoryItem } from "../categories/category.types";
@@ -13,7 +12,7 @@ export type SetCartItems = ActionWithPayload<
   CartItem[]
 >;
 
-export type setIsCartOpen = ActionWithPayload<
+export type SetIsCartOpen = ActionWithPayload<
   CART_ACTION_TYPES.SET_IS_CART_OPEN,
   boolean
 >;
@@ -23,7 +22,10 @@ export type setIsCartOpen = ActionWithPayload<
  * @param {array} cartItems Cart items
  * @param {object} product Product
  */
-const addCartItem = (cartItems: CartItem[], product: CategoryItem) => {
+const addCartItem = (
+  cartItems: CartItem[],
+  product: CategoryItem
+): CartItem[] => {
   const copiedCartItems = cartItems.slice(0);
 
   const existingCartItem = copiedCartItems.find(
@@ -46,7 +48,10 @@ const addCartItem = (cartItems: CartItem[], product: CategoryItem) => {
  * @param {array} cartItems Cart items
  * @param {object} product Product
  */
-const removeCartItem = (cartItems: CartItem[], product: CategoryItem) => {
+const removeCartItem = (
+  cartItems: CartItem[],
+  product: CategoryItem
+): CartItem[] => {
   const copiedCartItems = cartItems.slice(0);
 
   const existingCartItem = copiedCartItems.find(
@@ -67,7 +72,10 @@ const removeCartItem = (cartItems: CartItem[], product: CategoryItem) => {
  * @param {array} cartItems Cart items
  * @param {string|number} productId Product id
  */
-const deleteCartItem = (cartItems: CartItem[], productId: number) => {
+const deleteCartItem = (
+  cartItems: CartItem[],
+  productId: number
+): CartItem[] => {
   return cartItems.filter((item) => item.id !== productId);
 };
 
@@ -94,10 +102,12 @@ export const removeItemFromCart = (
 export const deleteItemFromCart = (cartItems: CartItem[], productId: number) =>
   setCartItems(deleteCartItem(cartItems, productId));
 
-export const setIsCartOpen = WithMatcher((bool: boolean) =>
-  createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, bool)
+export const setIsCartOpen = WithMatcher(
+  (bool: boolean): SetIsCartOpen =>
+    createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, bool)
 );
 
-export const setCartItems = WithMatcher((cartItems: CartItem[]) =>
-  createAction(CART_ACTION_TYPES.SET_CART_ITEMS, cartItems)
+export const setCartItems = WithMatcher(
+  (cartItems: CartItem[]): SetCartItems =>
+    createAction(CART_ACTION_TYPES.SET_CART_ITEMS, cartItems)
 );

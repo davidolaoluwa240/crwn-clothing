@@ -8,10 +8,10 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   selectIsCartOpen,
   selectCartCount,
-} from "../../store/cart/cart.selector.js";
+} from "../../store/cart/cart.selector";
 
 // Redux Actions
-import { setIsCartOpen } from "../../store/cart/cart.action.js";
+import { setIsCartOpen } from "../../store/cart/cart.action";
 
 // Style
 import {
