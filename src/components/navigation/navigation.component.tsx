@@ -3,7 +3,7 @@ import React from "react";
 
 // Components
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
-import { CartDropdown, CartIcon } from "../";
+import { CartDropdown, CartIcon } from "..";
 
 // Hooks
 import { useSelector, useDispatch } from "react-redux";
@@ -21,7 +21,7 @@ import {
   LogoContainer,
   NavLinks,
   NavLink,
-} from "./navigation.styles.jsx";
+} from "./navigation.styles";
 
 export const Navigation = () => {
   const dispatch = useDispatch();

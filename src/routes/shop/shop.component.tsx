@@ -1,14 +1,11 @@
 // Modules
 import React from "react";
 
-// Firebase
-import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
-
 // Components
 import { Routes, Route } from "react-router-dom";
 
 // Routes
-import { CategoriesPreview, Category } from "../";
+import { CategoriesPreview, Category } from "..";
 
 // Hooks
 import { useEffect } from "react";

@@ -1,5 +1,5 @@
 // Modules
-import React from "react";
+import React, { FC } from "react";
 
 // Hooks
 import { useNavigate } from "react-router-dom";
@@ -11,7 +11,17 @@ import {
   DirectoryItemContainer,
 } from "./directory-item.styles";
 
-export const DirectoryItem = ({ imageUrl, title, route }) => {
+type DirectoryItemProps = {
+  imageUrl: string;
+  title: string;
+  route: string;
+};
+
+export const DirectoryItem: FC<DirectoryItemProps> = ({
+  imageUrl,
+  title,
+  route,
+}) => {
   const navigate = useNavigate();
 
   const onNavigateHandler = () => navigate(route);

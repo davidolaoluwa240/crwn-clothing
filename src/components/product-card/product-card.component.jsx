@@ -19,7 +19,7 @@ import {
   FooterName,
   FooterPrice,
   ProductCardContainer,
-} from "./product-card.styles.jsx";
+} from "./product-card.styles";
 
 export const ProductCard = ({ product }) => {
   const dispatch = useDispatch();

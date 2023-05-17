@@ -1,5 +1,5 @@
 // Modules
-import React from "react";
+import React, { FC } from "react";
 
 // Hooks
 import { useDispatch, useSelector } from "react-redux";
@@ -24,8 +24,13 @@ import {
   RemoveButton,
   BaseSpan,
 } from "./checkout-item.styles";
+import { CartItem } from "../../store/cart/cart.types";
 
-export const CheckoutItem = ({ cartItem }) => {
+export type CheckoutItemProps = {
+  cartItem: CartItem;
+};
+
+export const CheckoutItem: FC<CheckoutItemProps> = ({ cartItem }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const { id, name, price, quantity, imageUrl } = cartItem;

@@ -19,7 +19,7 @@ import { stripePromise } from "./utils/stripe/stripe.utils";
 import "./index.scss";
 
 // Mount React To DOM
-const container = document.getElementById("root");
+const container = document.getElementById("root") as HTMLElement;
 const root = createRoot(container);
 root.render(
   <React.StrictMode>

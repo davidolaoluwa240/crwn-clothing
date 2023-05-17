@@ -2,10 +2,10 @@
 import React from "react";
 
 // Components
-import { DirectoryItem } from "../";
+import { DirectoryItem } from "..";
 
 // Style
-import { DirectoryContainer } from "./directory.styles.jsx";
+import { DirectoryContainer } from "./directory.styles";
 
 // Static Data
 const categories = [

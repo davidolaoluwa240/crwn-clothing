@@ -5,7 +5,7 @@ import React from "react";
 import { SignUpForm, SignInForm } from "../../components";
 
 // Style
-import { AuthenticationContainer } from "./authencation.styles.jsx";
+import { AuthenticationContainer } from "./authencation.styles";
 
 export const Authentication = () => {
   return (

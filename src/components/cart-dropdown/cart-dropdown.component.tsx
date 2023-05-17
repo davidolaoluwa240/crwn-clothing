@@ -9,14 +9,14 @@ import { useNavigate } from "react-router-dom";
 import { selectCartItems } from "../../store/cart/cart.selector";
 
 // Components
-import { Button, CartItem } from "../";
+import { Button, CartItem } from "..";
 
 // Style
 import {
   EmptyMessage,
   CartDropdownContainer,
   CartItems,
-} from "./cart-dropdown.styles.jsx";
+} from "./cart-dropdown.styles";
 
 export const CartDropdown = () => {
   const cartItems = useSelector(selectCartItems);

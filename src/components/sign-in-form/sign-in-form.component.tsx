@@ -1,12 +1,12 @@
 // Modules
-import React from "react";
+import React, { FormEvent, ChangeEvent } from "react";
 
 // Hooks
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 // Components
-import { Button, FormInput, BUTTON_TYPE_VARIANT } from "../";
+import { Button, FormInput, BUTTON_TYPE_VARIANT } from "..";
 
 // Redux Actions
 import {
@@ -15,7 +15,8 @@ import {
 } from "../../store/user/user.action";
 
 // Style
-import { ButtonsContainer, SignUpContainer } from "./sign-in-form.styles.jsx";
+import { ButtonsContainer, SignUpContainer } from "./sign-in-form.styles";
+import { FirebaseError } from "firebase/app";
 
 // Static Data
 const defaultFormFields = {
@@ -32,26 +33,30 @@ export const SignInForm = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     try {
       event.preventDefault();
       dispatch(emailSignInStart(email, password));
       resetFormFields();
     } catch (err) {
-      switch (err.code) {
-        case "auth/wrong-password":
-          alert("Incorrect password for email");
-          break;
-        case "auth/user-not-found":
-          alert("No user associated with this email");
-          break;
-        default:
-          console.log(err);
+      if (err instanceof FirebaseError) {
+        switch (err.code) {
+          case "auth/wrong-password":
+            alert("Incorrect password for email");
+            break;
+          case "auth/user-not-found":
+            alert("No user associated with this email");
+            break;
+          default:
+            console.log(err);
+        }
+      } else {
+        console.log(err);
       }
     }
   };
 
-  const handleInputChange = async (event) => {
+  const handleInputChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields((prevState) => ({ ...prevState, [name]: value }));
   };
