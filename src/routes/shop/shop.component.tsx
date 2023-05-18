@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 // Redux Actions
 import { fetchCategoriesStart } from "../../store/categories/category.action";
 
-export const Shop = () => {
+const Shop = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,3 +28,5 @@ export const Shop = () => {
     </Routes>
   );
 };
+
+export default Shop;

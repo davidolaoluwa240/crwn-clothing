@@ -24,7 +24,7 @@ type CategoryRouteParams = {
   category: string;
 };
 
-export const Category = () => {
+const Category = () => {
   const { category } = useParams<
     keyof CategoryRouteParams
   >() as CategoryRouteParams;
@@ -55,3 +55,5 @@ export const Category = () => {
     </Fragment>
   );
 };
+
+export default Category;

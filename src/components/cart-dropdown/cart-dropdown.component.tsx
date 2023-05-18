@@ -2,6 +2,7 @@
 import React from "react";
 
 // Hooks
+import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -30,7 +31,7 @@ export const CartDropdown = () => {
   /**
    * Go To Checkout Route
    */
-  const goToCheckoutHandler = () => navigate("/checkout");
+  const goToCheckoutHandler = useCallback(() => navigate("/checkout"), []);
 
   return (
     <CartDropdownContainer>

@@ -1,5 +1,5 @@
 // Modules
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 
 // Style
 import { CartItemContainer, ItemDetails, ItemName } from "./cart-item.styles";
@@ -10,7 +10,7 @@ export type CartItemProps = {
   cartItem: CartItemType;
 };
 
-export const CartItem: FC<CartItemProps> = ({ cartItem }) => {
+export const CartItem: FC<CartItemProps> = memo(({ cartItem }) => {
   const { name, quantity, price, imageUrl } = cartItem;
 
   return (
@@ -24,4 +24,4 @@ export const CartItem: FC<CartItemProps> = ({ cartItem }) => {
       </ItemDetails>
     </CartItemContainer>
   );
-};
+});

@@ -14,7 +14,7 @@ import {
   selectCategoriesIsLoading,
 } from "../../store/categories/category.selector";
 
-export const CategoriesPreview = () => {
+const CategoriesPreview = () => {
   const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
 
@@ -34,3 +34,5 @@ export const CategoriesPreview = () => {
     </Fragment>
   );
 };
+
+export default CategoriesPreview;

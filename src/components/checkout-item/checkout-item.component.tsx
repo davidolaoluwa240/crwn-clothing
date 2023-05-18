@@ -1,5 +1,5 @@
 // Modules
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 
 // Hooks
 import { useDispatch, useSelector } from "react-redux";
@@ -30,7 +30,7 @@ export type CheckoutItemProps = {
   cartItem: CartItem;
 };
 
-export const CheckoutItem: FC<CheckoutItemProps> = ({ cartItem }) => {
+export const CheckoutItem: FC<CheckoutItemProps> = memo(({ cartItem }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const { id, name, price, quantity, imageUrl } = cartItem;
@@ -71,4 +71,4 @@ export const CheckoutItem: FC<CheckoutItemProps> = ({ cartItem }) => {
       <RemoveButton onClick={deleteItemFromCartHandler}>&#10005;</RemoveButton>
     </CheckoutItemContainer>
   );
-};
+});

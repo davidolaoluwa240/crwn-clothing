@@ -6,7 +6,7 @@ import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
 import { Directory } from "../../components";
 
-export const Home = () => {
+const Home = () => {
   return (
     <Fragment>
       <Directory />
@@ -14,3 +14,5 @@ export const Home = () => {
     </Fragment>
   );
 };
+
+export default Home;

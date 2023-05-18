@@ -1,5 +1,5 @@
 // Modules
-import React from "react";
+import React, { Suspense } from "react";
 
 // Hooks
 import { useEffect } from "react";
@@ -10,6 +10,7 @@ import { checkUserSession } from "./store/user/user.action";
 
 // Components
 import { Routes, Route } from "react-router-dom";
+import { Spinner } from "./components";
 
 // Routes
 import { Home, Authentication, Shop, Checkout } from "./routes";
@@ -25,14 +26,16 @@ const App = () => {
   }, []);
 
   return (
-    <Routes>
-      <Route path="/" element={<LandingLayout />}>
-        <Route index element={<Home />} />
-        <Route path="shop/*" element={<Shop />} />
-        <Route path="auth" element={<Authentication />} />
-        <Route path="checkout" element={<Checkout />} />
-      </Route>
-    </Routes>
+    <Suspense fallback={<Spinner />}>
+      <Routes>
+        <Route path="/" element={<LandingLayout />}>
+          <Route index element={<Home />} />
+          <Route path="shop/*" element={<Shop />} />
+          <Route path="auth" element={<Authentication />} />
+          <Route path="checkout" element={<Checkout />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 };
 

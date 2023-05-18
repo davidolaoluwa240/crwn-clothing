@@ -16,7 +16,7 @@ import { CheckoutItem, PaymentForm } from "../../components";
 // Style
 import "./checkout.styles.scss";
 
-export const Checkout = () => {
+const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
 
@@ -50,3 +50,5 @@ export const Checkout = () => {
     </div>
   );
 };
+
+export default Checkout;
